@@ -10,26 +10,34 @@ export function useRequest<T>(
 	request: RequestFunction<T>
 ): [T | null, boolean, string] {
 	const [data, setData] = useState<T | null>(null);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [error, setError] = useState<string>("");
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState("");
 
 	useEffect(() => {
-		setIsLoading(true);
+		const fetchData = async (): Promise<void> => {
+			setIsLoading(true);
 
-		request()
-			.then((response) => {
+			try {
+				const response = await request();
 				setData(response.data);
-			})
-			.catch((error) => {
+			} catch (error) {
 				if (error instanceof Error) {
 					setError(error.message);
 				} else {
 					setError("An unknown error occurred while requesting data");
 				}
-			})
-			.finally(() => {
+			} finally {
 				setIsLoading(false);
-			});
+			}
+		};
+
+		fetchData().catch((error) => {
+			if (error instanceof Error) {
+				setError(error.message);
+			} else {
+				setError("An unknown error occurred while requesting data");
+			}
+		});
 	}, [request]);
 
 	return [data, isLoading, error];

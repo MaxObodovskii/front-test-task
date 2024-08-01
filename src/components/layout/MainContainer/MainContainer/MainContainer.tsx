@@ -1,9 +1,8 @@
-import type { FC } from "react";
 import { RightContainer } from "../RightContainer/RightContainer";
 import { LeftContainer } from "../LeftContainer/LeftContainer";
-import { IconStartSearch } from "../../../ui/StartSearchIcon";
+import { IconStartSearch } from "@/components/ui/IconStartSearch";
 
-export const MainContainer: FC = () => {
+export const MainContainer = (): JSX.Element => {
 	return (
 		<div>
 			<LeftContainer />

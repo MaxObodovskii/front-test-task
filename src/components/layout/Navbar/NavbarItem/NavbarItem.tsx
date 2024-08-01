@@ -1,12 +1,10 @@
-import type { FC } from "react";
-import { IconGithub } from "../../../ui/IconGithub";
-import { InputGithub } from "../../../ui/InputGithub";
-import classes from "./NavbarItem.module.css";
+import { IconGithub } from "@/components/ui/IconGithub";
+import { InputGithub } from "@/components/ui/InputGithub";
 
-export const NavbarItem: FC = () => {
+export const NavbarItem = (): JSX.Element => {
 	return (
 		<div>
-			<nav className={classes["NavbarBg"]}>
+			<nav className="bg-blue-600">
 				<div className="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
 					<IconGithub />
 					<InputGithub />

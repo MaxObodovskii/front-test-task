@@ -1,5 +1,3 @@
-import type { FC } from "react";
-
-export const RightContainer: FC = () => {
+export const RightContainer = (): JSX.Element => {
 	return <div></div>;
 };

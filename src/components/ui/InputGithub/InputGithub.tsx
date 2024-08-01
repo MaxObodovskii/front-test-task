@@ -1,6 +1,4 @@
-import type { FC } from "react";
-
-export const InputGithub: FC = () => {
+export const InputGithub = (): JSX.Element => {
 	return (
 		<div className="flex md:order-2">
 			<button

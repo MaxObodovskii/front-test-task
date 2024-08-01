@@ -1,7 +1,6 @@
-import type { FC } from "react";
 import { NavbarItem } from "../NavbarItem/NavbarItem";
 
-export const Navbar: FC = () => {
+export const Navbar = (): JSX.Element => {
 	return (
 		<div>
 			<NavbarItem />
