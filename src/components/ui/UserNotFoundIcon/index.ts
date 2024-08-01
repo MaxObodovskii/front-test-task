@@ -1,0 +1,1 @@
+export { IconUserNotFound } from "./IconUserNotFound";
