@@ -1,1 +1,0 @@
-export { InputGithub } from "./InputGithub";
