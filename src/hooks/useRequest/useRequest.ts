@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface RequestData<T> {
+export interface RequestData<T> {
 	data: T;
 }
 

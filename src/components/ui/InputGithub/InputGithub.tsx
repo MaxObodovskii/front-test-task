@@ -1,4 +1,13 @@
-export const InputGithub = (): JSX.Element => {
+import type { ChangeEvent } from "react";
+
+interface InputGithubProps {
+	valueInput: string;
+	onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const InputGithub = (props: InputGithubProps): JSX.Element => {
+	const { valueInput, onChangeHandler } = props;
+
 	return (
 		<div className="flex md:order-2">
 			<button
@@ -49,6 +58,8 @@ export const InputGithub = (): JSX.Element => {
 					id="search-navbar"
 					placeholder="Enter GitHub username"
 					type="text"
+					value={valueInput}
+					onChange={onChangeHandler}
 				/>
 			</div>
 		</div>
