@@ -1,9 +1,17 @@
+import type { ChangeEvent } from "react";
 import { NavbarItem } from "../NavbarItem/NavbarItem";
 
-export const Navbar = (): JSX.Element => {
+interface NavbarProps {
+	valueInput: string;
+	onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const Navbar = (props: NavbarProps): JSX.Element => {
+	const { valueInput, onChangeHandler } = props;
+
 	return (
 		<div>
-			<NavbarItem />
+			<NavbarItem valueInput={valueInput} onChangeHandler={onChangeHandler} />
 		</div>
 	);
 };

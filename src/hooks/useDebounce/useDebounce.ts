@@ -1,9 +1,9 @@
 import { useCallback, useRef, type MutableRefObject } from "react";
 
-/* Или нужно использовать unknow (чтобы убрать eslint-disable), но по сути же может приходить любые аргументы сюда */
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function useDebounce<ReturnType extends (...args: Array<any>) => void>(
+export function useDebounce<
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	ReturnType extends (...args: Array<any>) => Promise<any>,
+>(
 	callback: ReturnType,
 	delay: number
 ): (...args: Parameters<ReturnType>) => void {
@@ -16,7 +16,9 @@ export function useDebounce<ReturnType extends (...args: Array<any>) => void>(
 			}
 
 			timer.current = setTimeout(() => {
-				callback(...args);
+				callback(...args).catch((error) => {
+					console.error(error);
+				});
 			}, delay);
 		},
 		[callback, delay]

@@ -9,7 +9,7 @@ export const useInput = (): InputResult => {
 	const [value, setValue] = useState("");
 
 	const onChange = (event: ChangeEvent<HTMLInputElement>): void => {
-		setValue(event.currentTarget.value);
+		setValue(event.target.value);
 	};
 
 	return {

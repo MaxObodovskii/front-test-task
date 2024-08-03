@@ -1,15 +1,21 @@
+import type { IUser } from "@/components/types/IUser";
 import { RightContainer } from "../RightContainer/RightContainer";
 import { LeftContainer } from "../LeftContainer/LeftContainer";
-import { IconStartSearch } from "@/components/ui/IconStartSearch";
+import type { IRepository } from "@/components/types/IRepository";
 
-export const MainContainer = (): JSX.Element => {
+interface MainContainerProps {
+	userData: { user: IUser | null; repositories: Array<IRepository> | null };
+}
+
+export const MainContainer = (props: MainContainerProps): JSX.Element => {
+	const { userData } = props;
+	const { user, repositories } = userData;
+
 	return (
-		<div>
-			<LeftContainer />
+		<div className="flex my-7 mx-14">
+			<LeftContainer userData={user} />
 
-			<IconStartSearch />
-
-			<RightContainer />
+			<RightContainer repositories={repositories} userData={user} />
 		</div>
 	);
 };
